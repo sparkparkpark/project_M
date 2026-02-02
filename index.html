@@ -66,7 +66,8 @@
         }
 
         #tab1:checked ~ .tab-container .tab-label[for="tab1"],
-        #tab2:checked ~ .tab-container .tab-label[for="tab2"] {
+        #tab2:checked ~ .tab-container .tab-label[for="tab2"],
+        #tab3:checked ~ .tab-container .tab-label[for="tab3"] {
             background: linear-gradient(45deg, #48dbfb, #54a0ff);
             transform: scale(1.15);
             animation: tabPulse 0.5s ease infinite alternate;
@@ -83,7 +84,8 @@
         }
 
         #tab1:checked ~ .page1,
-        #tab2:checked ~ .page2 {
+        #tab2:checked ~ .page2,
+        #tab3:checked ~ .page3 {
             display: block;
         }
 
@@ -326,8 +328,8 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ===== 페이지 2 스타일 ===== */
-        .page2 {
+        /* ===== 페이지 3 스타일: 우주최강여신 ===== */
+        .page3 {
             background: linear-gradient(135deg, #00c9ff, #92fe9d, #f9d423, #ff4e50);
             background-size: 600% 600%;
             animation: ultraRainbow 4s ease infinite;
@@ -575,21 +577,224 @@
             from { transform: scale(1); }
             to { transform: scale(1.1); }
         }
+
+        /* ===== 페이지 1 스타일: 그것이 궁금하다 ===== */
+        .page1 {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe);
+            background-size: 400% 400%;
+            animation: mysteryRainbow 5s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes mysteryRainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .mystery-title {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #fff;
+            text-shadow:
+                3px 3px 0 #f5576c,
+                6px 6px 0 #764ba2,
+                9px 9px 0 #667eea;
+            animation: mysteryPulse 1s ease infinite alternate;
+            text-align: center;
+            letter-spacing: 10px;
+        }
+
+        @keyframes mysteryPulse {
+            0% {
+                transform: scale(1) rotate(-2deg);
+            }
+            100% {
+                transform: scale(1.05) rotate(2deg);
+            }
+        }
+
+        .mystery-question {
+            font-family: 'Comic Neue', cursive;
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mystery-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid #f5576c;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 30px 20px;
+            max-width: 700px;
+            box-shadow:
+                0 10px 40px rgba(245,87,108,0.4),
+                0 0 0 5px rgba(102,126,234,0.3);
+            animation: boxGlow 2s ease infinite alternate;
+        }
+
+        @keyframes boxGlow {
+            from { box-shadow: 0 10px 40px rgba(245,87,108,0.4), 0 0 0 5px rgba(102,126,234,0.3); transform: scale(1); }
+            to { box-shadow: 0 15px 50px rgba(240,147,251,0.5), 0 0 0 8px rgba(79,172,254,0.4); transform: scale(1.02); }
+        }
+
+        .reveal-text {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: #f5576c;
+            text-shadow:
+                2px 2px 0 #fff,
+                4px 4px 0 #764ba2;
+            text-align: center;
+            animation: revealPulse 0.8s ease infinite alternate;
+        }
+
+        @keyframes revealPulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .mystery-item {
+            font-family: 'Comic Neue', cursive;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            color: #764ba2;
+            padding: 15px 30px;
+            margin: 15px 0;
+            background: linear-gradient(90deg, rgba(102,126,234,0.2), rgba(240,147,251,0.2));
+            border-left: 5px solid #f5576c;
+            border-radius: 0 15px 15px 0;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .mystery-item:nth-child(1) { animation-delay: 0.2s; }
+        .mystery-item:nth-child(2) { animation-delay: 0.4s; }
+        .mystery-item:nth-child(3) { animation-delay: 0.6s; }
+        .mystery-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .final-reveal {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(3rem, 10vw, 7rem);
+            color: #fff;
+            text-shadow:
+                4px 4px 0 #f5576c,
+                8px 8px 0 #764ba2,
+                12px 12px 0 #667eea;
+            text-align: center;
+            animation: finalReveal 1s ease infinite;
+            margin: 30px 0;
+        }
+
+        @keyframes finalReveal {
+            0%, 100% { transform: scale(1) rotate(-2deg); filter: brightness(1); }
+            50% { transform: scale(1.1) rotate(2deg); filter: brightness(1.3); }
+        }
+
+        .spotlight {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(240,147,251,0.4) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: spotlightMove 3s ease infinite;
+        }
+
+        .spotlight1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .spotlight2 { top: 30%; right: 5%; animation-delay: 0.5s; }
+        .spotlight3 { bottom: 20%; left: 20%; animation-delay: 1s; }
+
+        @keyframes spotlightMove {
+            0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+
+        .question-mark {
+            font-size: 6rem;
+            animation: questionBounce 1s ease infinite;
+            display: inline-block;
+            filter: drop-shadow(0 5px 15px rgba(255,255,255,0.5));
+        }
+
+        @keyframes questionBounce {
+            0%, 100% { transform: translateY(0) rotate(-10deg) scale(1); }
+            50% { transform: translateY(-20px) rotate(10deg) scale(1.2); }
+        }
     </style>
 </head>
 <body>
     <!-- 탭 라디오 버튼 -->
     <input type="radio" name="tabs" id="tab1" class="tab-radio" checked>
     <input type="radio" name="tabs" id="tab2" class="tab-radio">
+    <input type="radio" name="tabs" id="tab3" class="tab-radio">
 
     <!-- 탭 네비게이션 -->
     <div class="tab-container">
-        <label for="tab1" class="tab-label">💖 LOVE 💖</label>
-        <label for="tab2" class="tab-label">🐢 GODDESS 🐢</label>
+        <label for="tab1" class="tab-label">🔍 MYSTERY 🔍</label>
+        <label for="tab2" class="tab-label">💖 LOVE 💖</label>
+        <label for="tab3" class="tab-label">🐢 GODDESS 🐢</label>
     </div>
 
-    <!-- 페이지 1: 기존 러브 페이지 -->
+    <!-- 페이지 1: 그것이 궁금하다 -->
     <div class="page page1">
+        <!-- 스포트라이트 효과 -->
+        <div class="spotlight spotlight1"></div>
+        <div class="spotlight spotlight2"></div>
+        <div class="spotlight spotlight3"></div>
+
+        <div class="container">
+            <span class="question-mark">❓</span>
+
+            <h1 class="mystery-title">그것이 궁금하다!</h1>
+
+            <div class="mystery-box">
+                <p class="mystery-question">
+                    세상에서 가장 아름다운 <strong style="color: #ff9ff3; font-size: 1.5em;">Minhee</strong><br><br>
+                    귀엽고 사랑스럽고<br>
+                    천재적인 두뇌를 가지고 있는데<br>
+                    <span style="color: #feca57; font-size: 1.3em;">왜 가장 아름답기까지 한것인가!</span>
+                </p>
+            </div>
+
+            <p class="reveal-text">🔍 미스테리가 오늘 풀린다! 🔍</p>
+
+            <div class="mystery-box">
+                <p class="reveal-text" style="margin-bottom: 30px;">그것은 바로!</p>
+
+                <div class="mystery-item">✨ 민희의 독보적인 존재감</div>
+                <div class="mystery-item">🍑 섹시한 엉덩이</div>
+                <div class="mystery-item">💋 백만불짜리 입술</div>
+                <div class="mystery-item">😊 압도적인 눈 웃음</div>
+                <div class="mystery-item">🦄 그 누구도 따라 올 수 없는 입담</div>
+                <div class="mystery-item">🌈 지금 미니보고 비 맞으라는거야! 의 주인공!!!</div>
+            </div>
+
+            <h1 class="final-reveal">이게 바로<br>김✨ 민✨ 희✨</h1>
+
+            <div class="marquee" style="background: linear-gradient(90deg, #ff4757, #1a1a2e);">
+                <div class="marquee-content" style="color: #feca57;">
+                    🔍 그것이 궁금하다 🔍 미스테리 해결 🔍 김민희의 아름다움의 비밀 🔍 독보적 존재감 🔍 백만불짜리 입술 🔍 압도적 눈웃음 🔍
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이지 2: 러브 페이지 -->
+    <div class="page page2">
         <!-- 떠다니는 이모지들 -->
         <div class="floating-emoji emoji1">💘</div>
         <div class="floating-emoji emoji2">🦄</div>
@@ -647,8 +852,8 @@
         </div>
     </div>
 
-    <!-- 페이지 2: 우주최강여신 페이지 -->
-    <div class="page page2">
+    <!-- 페이지 3: 우주최강여신 페이지 -->
+    <div class="page page3">
         <!-- 떠다니는 별들 -->
         <div class="floating-stars star1">⭐</div>
         <div class="floating-stars star2">🌟</div>
@@ -713,7 +918,7 @@
             </div>
 
             <p class="page2-footer">
-                🐢 거북이들의 여신 🐢
+                🐢 거북이들의 여신, 헬씨의 누나! 🐢
             </p>
         </div>
     </div>
