@@ -80,7 +80,8 @@
         #tab3:checked ~ .tab-container .tab-label[for="tab3"],
         #tab4:checked ~ .tab-container .tab-label[for="tab4"],
         #tab5:checked ~ .tab-container .tab-label[for="tab5"],
-        #tab6:checked ~ .tab-container .tab-label[for="tab6"] {
+        #tab6:checked ~ .tab-container .tab-label[for="tab6"],
+        #tab7:checked ~ .tab-container .tab-label[for="tab7"] {
             background: linear-gradient(45deg, #48dbfb, #54a0ff);
             transform: scale(1.15);
             animation: tabPulse 0.5s ease infinite alternate;
@@ -101,7 +102,8 @@
         #tab3:checked ~ .page3,
         #tab4:checked ~ .page4,
         #tab5:checked ~ .page5,
-        #tab6:checked ~ .page6 {
+        #tab6:checked ~ .page6,
+        #tab7:checked ~ .page7 {
             display: block;
         }
 
@@ -1640,6 +1642,280 @@
             0%, 100% { transform: scale(1) rotate(-1deg); }
             50% { transform: scale(1.08) rotate(1deg); }
         }
+
+        /* 페이지 7: 발렌타인 샤넬백 */
+        .page7 {
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ff1493, #ff69b4, #ffb6c1);
+            background-size: 400% 400%;
+            animation: valentineBg 5s ease infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes valentineBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .valentine-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .valentine-card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 4px solid #ff1493;
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.3), 0 0 30px rgba(255, 105, 180, 0.2);
+            position: relative;
+        }
+
+        .valentine-title {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: #ff1493;
+            text-shadow: 3px 3px 0 #ffb6c1;
+            margin-bottom: 10px;
+            animation: valentinePulse 1.5s ease infinite alternate;
+        }
+
+        @keyframes valentinePulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .valentine-text {
+            font-family: 'Comic Neue', cursive;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: #333;
+            line-height: 2;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+
+        .valentine-text .highlight-line {
+            color: #ff1493;
+            font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+        }
+
+        .valentine-text .beg-line {
+            display: inline-block;
+            animation: begBounce 0.6s ease infinite alternate;
+            color: #e91e63;
+            font-size: clamp(1.5rem, 4vw, 2.1rem);
+        }
+
+        .valentine-text .beg-line:nth-child(2) { animation-delay: 0.15s; }
+        .valentine-text .beg-line:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes begBounce {
+            0% { transform: translateY(0) rotate(-2deg); }
+            100% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        .valentine-text .big-beg {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: #ff1493;
+            font-family: 'Bangers', cursive;
+            display: block;
+            margin-top: 10px;
+            animation: bigBegShake 0.3s ease infinite;
+        }
+
+        @keyframes bigBegShake {
+            0% { transform: translateX(-3px) rotate(-1deg); }
+            25% { transform: translateX(3px) rotate(1deg); }
+            50% { transform: translateX(-2px) rotate(-1deg); }
+            75% { transform: translateX(2px) rotate(1deg); }
+            100% { transform: translateX(-3px) rotate(-1deg); }
+        }
+
+        .valentine-text .puppy-eyes {
+            font-size: clamp(2rem, 5vw, 3rem);
+            display: block;
+            margin-top: 15px;
+            animation: puppyWobble 1s ease infinite;
+        }
+
+        @keyframes puppyWobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .valentine-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff69b4, #ff1493, #ff69b4, transparent);
+            margin: 25px 0;
+        }
+
+        .button-area {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 35px;
+            position: relative;
+            min-height: 100px;
+        }
+
+        .btn-yes {
+            padding: 20px 50px;
+            font-family: 'Bangers', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
+            background-size: 200% 200%;
+            animation: yesGlow 1.5s ease infinite;
+            border: 3px solid #fff;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+            transition: all 0.2s;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        @keyframes yesGlow {
+            0% { background-position: 0% 50%; box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 105, 180, 0.3); }
+            50% { background-position: 100% 50%; box-shadow: 0 8px 35px rgba(255, 20, 147, 0.7), 0 0 40px rgba(255, 105, 180, 0.5); }
+            100% { background-position: 0% 50%; box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 105, 180, 0.3); }
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 40px rgba(255, 20, 147, 0.8);
+        }
+
+        .btn-no {
+            padding: 20px 50px;
+            font-family: 'Bangers', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            background: linear-gradient(45deg, #aaa, #888);
+            border: 3px solid #fff;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            user-select: none;
+            z-index: 10;
+            transition: all 0.2s ease-out;
+        }
+
+        .btn-no.escaped {
+            position: fixed;
+            z-index: 9998;
+        }
+
+        /* 떠다니는 하트들 */
+        .floating-heart {
+            position: fixed;
+            font-size: 2.5rem;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .fh1 { top: 10%; left: 5%; animation: floatHeart1 6s ease-in-out infinite; }
+        .fh2 { top: 20%; right: 8%; animation: floatHeart2 7s ease-in-out infinite; }
+        .fh3 { top: 50%; left: 3%; animation: floatHeart1 8s ease-in-out infinite 1s; }
+        .fh4 { top: 70%; right: 5%; animation: floatHeart2 6s ease-in-out infinite 0.5s; }
+        .fh5 { top: 35%; left: 10%; animation: floatHeart1 9s ease-in-out infinite 2s; }
+        .fh6 { top: 80%; left: 15%; animation: floatHeart2 7s ease-in-out infinite 1.5s; }
+        .fh7 { top: 15%; right: 15%; animation: floatHeart1 8s ease-in-out infinite 0.8s; }
+        .fh8 { top: 60%; right: 12%; animation: floatHeart2 6s ease-in-out infinite 2.5s; }
+
+        @keyframes floatHeart1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(15deg); }
+            50% { transform: translateY(-10px) rotate(-10deg); }
+            75% { transform: translateY(-25px) rotate(5deg); }
+        }
+
+        @keyframes floatHeart2 {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-20px) rotate(-15deg) scale(1.2); }
+            66% { transform: translateY(-35px) rotate(10deg) scale(0.9); }
+        }
+
+        /* Yes 누른 후 축하 오버레이 */
+        .chanel-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 20, 147, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: overlayPop 0.5s ease;
+        }
+
+        .chanel-overlay.show {
+            display: flex;
+        }
+
+        @keyframes overlayPop {
+            0% { opacity: 0; transform: scale(0.5); }
+            60% { transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .chanel-message {
+            font-family: 'Bangers', cursive;
+            font-size: clamp(2rem, 7vw, 4rem);
+            color: #fff;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            text-align: center;
+            padding: 20px;
+            animation: chanelBounce 0.5s ease infinite alternate;
+        }
+
+        @keyframes chanelBounce {
+            0% { transform: scale(1) rotate(-2deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .chanel-emoji-rain {
+            font-size: 3rem;
+            margin-top: 20px;
+            animation: emojiSpin 2s linear infinite;
+        }
+
+        @keyframes emojiSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .chanel-close-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            background: #fff;
+            color: #ff1493;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .chanel-close-btn:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -1671,7 +1947,8 @@
     <!-- 메인 콘텐츠 -->
     <div class="main-content hidden" id="mainContent">
     <!-- 탭 라디오 버튼 -->
-    <input type="radio" name="tabs" id="tab6" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab7" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab6" class="tab-radio">
     <input type="radio" name="tabs" id="tab5" class="tab-radio">
     <input type="radio" name="tabs" id="tab4" class="tab-radio">
     <input type="radio" name="tabs" id="tab1" class="tab-radio">
@@ -1680,12 +1957,62 @@
 
     <!-- 탭 네비게이션 -->
     <div class="tab-container">
+        <label for="tab7" class="tab-label">💝 VALENTINE 💝</label>
         <label for="tab6" class="tab-label">🚨 비상 🚨</label>
         <label for="tab5" class="tab-label">🏥 OPEN 🏥</label>
         <label for="tab4" class="tab-label">🐧 ADELIE 🐧</label>
         <label for="tab1" class="tab-label">🔍 MYSTERY 🔍</label>
         <label for="tab3" class="tab-label">🐢 GODDESS 🐢</label>
         <label for="tab2" class="tab-label">💖 LOVE 💖</label>
+    </div>
+
+    <!-- 페이지 7: 발렌타인 샤넬백 -->
+    <div class="page page7">
+        <!-- 떠다니는 하트들 -->
+        <div class="floating-heart fh1">💕</div>
+        <div class="floating-heart fh2">💗</div>
+        <div class="floating-heart fh3">💖</div>
+        <div class="floating-heart fh4">💝</div>
+        <div class="floating-heart fh5">🎀</div>
+        <div class="floating-heart fh6">💘</div>
+        <div class="floating-heart fh7">👜</div>
+        <div class="floating-heart fh8">✨</div>
+
+        <div class="valentine-container">
+            <div class="valentine-title">💝 Happy Valentine's Day 💝</div>
+
+            <div class="valentine-card">
+                <div class="valentine-text">
+                    <span class="highlight-line">💌 자기야 💌</span><br>
+                    발렌타인 선물로<br>
+                    <span class="highlight-line">👜 샤넬백 사죠 👜</span><br><br>
+
+                    <span class="beg-line">사죠 🙏</span><br>
+                    <span class="beg-line">사죠 🙏</span><br>
+                    <span class="big-beg">사주떼요 💕</span>
+                    <span class="big-beg">떤덩이 해주떼요 🐯</span>
+                    <span class="puppy-eyes">🥺👉👈</span>
+                </div>
+
+                <hr class="valentine-divider">
+
+                <div class="button-area" id="buttonArea">
+                    <button class="btn-yes" id="btnYes" onclick="showChanelResult()">💖 Yes 💖</button>
+                    <button class="btn-no" id="btnNo">🙅 No 🙅</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 샤넬 축하 오버레이 -->
+    <div class="chanel-overlay" id="chanelOverlay">
+        <div class="chanel-emoji-rain">👜✨💖✨👜</div>
+        <div class="chanel-message">
+            고마우니깐<br>
+            어흥쿠폰 3만장!! 🐯
+        </div>
+        <div class="chanel-emoji-rain">🎉💝🛍️💝🎉</div>
+        <button class="chanel-close-btn" onclick="closeChanelResult()">닫기</button>
     </div>
 
     <!-- 페이지 6: 비상! 곤듀 -->
@@ -2235,6 +2562,73 @@
         }
 
         drawNeuronNetwork();
+
+        // ===== 발렌타인 No 버튼 도망치기 =====
+        const btnNo = document.getElementById('btnNo');
+
+        function runAway(e) {
+            const btnRect = btnNo.getBoundingClientRect();
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
+
+            const dx = e.clientX - btnCenterX;
+            const dy = e.clientY - btnCenterY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // 50px 이내 접근 시 도망
+            if (dist < 50) {
+                // fixed로 전환해서 화면 전체를 돌아다니게
+                btnNo.classList.add('escaped');
+
+                const btnW = btnRect.width;
+                const btnH = btnRect.height;
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                // 마우스 반대 방향 + 랜덤으로 도망
+                let newX, newY;
+                const jumpDist = 200 + Math.random() * 200;
+
+                newX = btnCenterX - dx / dist * jumpDist - btnW / 2 + (Math.random() - 0.5) * 100;
+                newY = btnCenterY - dy / dist * jumpDist - btnH / 2 + (Math.random() - 0.5) * 100;
+
+                // 화면 밖으로 나가지 않게 제한, 나가면 반대쪽으로
+                if (newX < 10) newX = vw - btnW - 10 - Math.random() * 100;
+                if (newX > vw - btnW - 10) newX = 10 + Math.random() * 100;
+                if (newY < 80) newY = vh - btnH - 10 - Math.random() * 100;
+                if (newY > vh - btnH - 10) newY = 80 + Math.random() * 100;
+
+                newX = Math.max(10, Math.min(newX, vw - btnW - 10));
+                newY = Math.max(80, Math.min(newY, vh - btnH - 10));
+
+                btnNo.style.left = newX + 'px';
+                btnNo.style.top = newY + 'px';
+            }
+        }
+
+        document.addEventListener('mousemove', runAway);
+
+        // 터치 디바이스
+        btnNo.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            runAway({ clientX: touch.clientX, clientY: touch.clientY });
+        });
+
+        // 혹시라도 클릭 성공하면 다시 도망
+        btnNo.addEventListener('click', function(e) {
+            e.preventDefault();
+            runAway({ clientX: e.clientX, clientY: e.clientY });
+        });
+
+        // Yes 버튼 클릭
+        function showChanelResult() {
+            document.getElementById('chanelOverlay').classList.add('show');
+        }
+
+        function closeChanelResult() {
+            document.getElementById('chanelOverlay').classList.remove('show');
+        }
     </script>
 </body>
 </html>
