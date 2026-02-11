@@ -2566,18 +2566,19 @@
         // ===== 발렌타인 No 버튼 도망치기 =====
         const btnNo = document.getElementById('btnNo');
 
-        function runAway(e) {
+        function jumpNo(touchX, touchY) {
             const btnRect = btnNo.getBoundingClientRect();
             const btnCenterX = btnRect.left + btnRect.width / 2;
             const btnCenterY = btnRect.top + btnRect.height / 2;
 
-            const dx = e.clientX - btnCenterX;
-            const dy = e.clientY - btnCenterY;
+            const dx = touchX - btnCenterX;
+            const dy = touchY - btnCenterY;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            // 50px 이내 접근 시 도망
-            if (dist < 50) {
-                // fixed로 전환해서 화면 전체를 돌아다니게
+            // PC: 50px, 모바일: 80px (손가락이 더 크니까)
+            const threshold = ('ontouchstart' in window) ? 80 : 50;
+
+            if (dist < threshold) {
                 btnNo.classList.add('escaped');
 
                 const btnW = btnRect.width;
@@ -2585,14 +2586,19 @@
                 const vw = window.innerWidth;
                 const vh = window.innerHeight;
 
-                // 마우스 반대 방향 + 랜덤으로 도망
+                // 반대 방향 + 랜덤으로 도망
+                const jumpDist = 150 + Math.random() * 200;
                 let newX, newY;
-                const jumpDist = 200 + Math.random() * 200;
 
-                newX = btnCenterX - dx / dist * jumpDist - btnW / 2 + (Math.random() - 0.5) * 100;
-                newY = btnCenterY - dy / dist * jumpDist - btnH / 2 + (Math.random() - 0.5) * 100;
+                if (dist > 1) {
+                    newX = btnCenterX - dx / dist * jumpDist - btnW / 2 + (Math.random() - 0.5) * 100;
+                    newY = btnCenterY - dy / dist * jumpDist - btnH / 2 + (Math.random() - 0.5) * 100;
+                } else {
+                    newX = Math.random() * (vw - btnW);
+                    newY = Math.random() * (vh - btnH - 80) + 80;
+                }
 
-                // 화면 밖으로 나가지 않게 제한, 나가면 반대쪽으로
+                // 화면 밖 나가면 반대쪽으로
                 if (newX < 10) newX = vw - btnW - 10 - Math.random() * 100;
                 if (newX > vw - btnW - 10) newX = 10 + Math.random() * 100;
                 if (newY < 80) newY = vh - btnH - 10 - Math.random() * 100;
@@ -2606,19 +2612,33 @@
             }
         }
 
-        document.addEventListener('mousemove', runAway);
-
-        // 터치 디바이스
-        btnNo.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            const touch = e.touches[0];
-            runAway({ clientX: touch.clientX, clientY: touch.clientY });
+        // PC 마우스
+        document.addEventListener('mousemove', function(e) {
+            jumpNo(e.clientX, e.clientY);
         });
 
-        // 혹시라도 클릭 성공하면 다시 도망
+        // 모바일: 화면 어디든 터치하면 No 버튼 근처인지 체크
+        document.addEventListener('touchstart', function(e) {
+            const touch = e.touches[0];
+            const btnRect = btnNo.getBoundingClientRect();
+            // 버튼 영역 + 여유 범위 안에 터치했으면 도망
+            if (touch.clientX > btnRect.left - 30 && touch.clientX < btnRect.right + 30 &&
+                touch.clientY > btnRect.top - 30 && touch.clientY < btnRect.bottom + 30) {
+                e.preventDefault();
+                jumpNo(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+
+        // 모바일: 손가락 드래그로 접근해도 도망
+        document.addEventListener('touchmove', function(e) {
+            const touch = e.touches[0];
+            jumpNo(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        // 혹시라도 클릭/탭 성공하면 다시 도망
         btnNo.addEventListener('click', function(e) {
             e.preventDefault();
-            runAway({ clientX: e.clientX, clientY: e.clientY });
+            jumpNo(e.clientX, e.clientY);
         });
 
         // Yes 버튼 클릭
