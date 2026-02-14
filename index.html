@@ -81,7 +81,8 @@
         #tab4:checked ~ .tab-container .tab-label[for="tab4"],
         #tab5:checked ~ .tab-container .tab-label[for="tab5"],
         #tab6:checked ~ .tab-container .tab-label[for="tab6"],
-        #tab7:checked ~ .tab-container .tab-label[for="tab7"] {
+        #tab7:checked ~ .tab-container .tab-label[for="tab7"],
+        #tab8:checked ~ .tab-container .tab-label[for="tab8"] {
             background: linear-gradient(45deg, #48dbfb, #54a0ff);
             transform: scale(1.15);
             animation: tabPulse 0.5s ease infinite alternate;
@@ -105,6 +106,332 @@
         #tab6:checked ~ .page6,
         #tab7:checked ~ .page7 {
             display: block;
+        }
+
+        #tab8:checked ~ .page8 {
+            display: flex;
+        }
+
+        /* 페이지 8: 발렌타인 러브레터 💌 */
+        .page8 {
+            background: linear-gradient(90deg, #ffb6c1, #ffc0cb, #ffe4b5, #ffd700, #ffe4b5, #ffc0cb, #ffb6c1);
+            background-size: 600% 100%;
+            animation: p8BgShift 6s linear infinite;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+
+        @keyframes p8BgShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
+        }
+
+        .page8::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(3px 3px at 20% 30%, #ff69b4, transparent),
+                radial-gradient(2px 2px at 40% 70%, #ffd700, transparent),
+                radial-gradient(3px 3px at 60% 20%, #ffb6c1, transparent),
+                radial-gradient(2px 2px at 80% 50%, #ff69b4, transparent),
+                radial-gradient(3px 3px at 10% 80%, #ffd700, transparent),
+                radial-gradient(2px 2px at 90% 10%, #ffb6c1, transparent),
+                radial-gradient(3px 3px at 50% 90%, #ff69b4, transparent),
+                radial-gradient(2px 2px at 30% 50%, #ffd700, transparent),
+                radial-gradient(3px 3px at 70% 40%, #ffb6c1, transparent),
+                radial-gradient(2px 2px at 15% 60%, #ff69b4, transparent);
+            animation: sparkleShift 4s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes sparkleShift {
+            0% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+            100% { opacity: 0.3; transform: scale(1); }
+        }
+
+        .love-letter-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 20px 0 60px;
+        }
+
+        .love-letter-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .love-letter-title .heart-deco {
+            font-size: 3rem;
+            animation: heartBeatLetter 1.2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartBeatLetter {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.2); }
+            60% { transform: scale(1); }
+        }
+
+        .love-letter-title h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            color: #e91e7b;
+            text-shadow: 0 0 15px rgba(255,105,180,0.4), 0 0 30px rgba(255,182,193,0.3);
+            margin: 10px 0;
+            letter-spacing: 3px;
+        }
+
+        .love-letter-title .subtitle {
+            font-size: 1.5rem;
+            color: #d4577a;
+            font-style: italic;
+            text-shadow: 0 0 8px rgba(255,182,193,0.4);
+        }
+
+        .letter-card {
+            background: rgba(255,255,255,0.7);
+            border: 2px solid rgba(255,105,180,0.3);
+            border-radius: 20px;
+            padding: 35px 30px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: cardGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 0 15px rgba(255,105,180,0.15), 0 0 30px rgba(255,182,193,0.1); }
+            100% { box-shadow: 0 0 25px rgba(255,105,180,0.3), 0 0 50px rgba(255,182,193,0.2); }
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmerCard 5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmerCard {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .letter-card .card-emoji {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            animation: bounceEmoji 2s ease infinite;
+        }
+
+        @keyframes bounceEmoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .letter-card h2 {
+            font-family: 'Bangers', cursive;
+            color: #e91e7b;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .letter-card p {
+            color: #6b3a5a;
+            font-size: 1.35rem;
+            line-height: 1.9;
+            text-align: center;
+            word-break: keep-all;
+        }
+
+        .letter-card p .highlight {
+            color: #e91e7b;
+            font-weight: bold;
+        }
+
+        .letter-card p .big-text {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #d4266e;
+        }
+
+        .coupon-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,250,230,0.7));
+            border: 2px dashed #f0a830;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            animation: couponShine 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes couponShine {
+            0% { box-shadow: 0 0 15px rgba(255,215,0,0.2); }
+            100% { box-shadow: 0 0 30px rgba(255,215,0,0.35), 0 0 50px rgba(255,182,193,0.15); }
+        }
+
+        .coupon-card::after {
+            content: '✂️';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            font-size: 1.5rem;
+            animation: snipSnip 1.5s ease-in-out infinite;
+        }
+
+        @keyframes snipSnip {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .coupon-card h2 {
+            font-family: 'Bangers', cursive;
+            color: #d4890a;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .coupon-card p {
+            color: #6b4a2a;
+            font-size: 1.35rem;
+            line-height: 1.8;
+        }
+
+        .coupon-card h3 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 1.4rem;
+            margin: 12px 0;
+            padding: 10px 16px;
+            border-radius: 15px;
+            display: inline-block;
+            animation: traitFloat 3s ease-in-out infinite;
+        }
+
+        .coupon-card h3:nth-child(1) {
+            color: #e91e7b;
+            background: rgba(255,105,180,0.15);
+            animation-delay: 0s;
+        }
+
+        .coupon-card h3:nth-child(2) {
+            color: #d4890a;
+            background: rgba(255,200,50,0.15);
+            animation-delay: 0.4s;
+        }
+
+        .coupon-card h3:nth-child(3) {
+            color: #c44a7a;
+            background: rgba(255,150,180,0.15);
+            animation-delay: 0.8s;
+        }
+
+        .coupon-card .coupon-emoji {
+            font-size: 3rem;
+            margin: 10px 0;
+            animation: heartBeatLetter 1.5s ease infinite;
+            display: inline-block;
+        }
+
+        .ogu-section {
+            background: rgba(255,255,255,0.7);
+            border: 2px solid rgba(255,105,180,0.3);
+            border-radius: 20px;
+            padding: 35px 30px;
+            margin-bottom: 25px;
+            text-align: center;
+            animation: cardGlow 3s ease-in-out infinite alternate;
+        }
+
+        .ogu-section h2 {
+            font-family: 'Bangers', cursive;
+            color: #e91e7b;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .ogu-section p {
+            color: #6b3a5a;
+            font-size: 1.35rem;
+            line-height: 1.9;
+        }
+
+        .trait-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .trait-item {
+            background: linear-gradient(135deg, rgba(255,182,193,0.4), rgba(255,228,196,0.4));
+            border: 1px solid rgba(255,105,180,0.3);
+            border-radius: 30px;
+            padding: 12px 26px;
+            color: #c44a7a;
+            font-size: 1.3rem;
+            font-weight: bold;
+            animation: traitFloat 3s ease-in-out infinite;
+            backdrop-filter: blur(5px);
+        }
+
+        .trait-item:nth-child(1) { animation-delay: 0s; }
+        .trait-item:nth-child(2) { animation-delay: 0.3s; }
+        .trait-item:nth-child(3) { animation-delay: 0.6s; }
+        .trait-item:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes traitFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.05); }
+        }
+
+        .final-kiss {
+            text-align: center;
+            padding: 30px;
+            font-size: 3rem;
+            color: #e91e7b;
+            text-shadow: 0 0 15px rgba(255,105,180,0.3);
+            animation: heartBeatLetter 1.2s ease-in-out infinite;
+        }
+
+        .page8-floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .p8-heart {
+            position: fixed;
+            font-size: 1.8rem;
+            opacity: 0.6;
+            animation: p8Float linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes p8Float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
         /* 페이지 6: 비상! 곤듀 응급 스타일 */
@@ -1947,7 +2274,8 @@
     <!-- 메인 콘텐츠 -->
     <div class="main-content hidden" id="mainContent">
     <!-- 탭 라디오 버튼 -->
-    <input type="radio" name="tabs" id="tab7" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab8" class="tab-radio" checked>
+    <input type="radio" name="tabs" id="tab7" class="tab-radio">
     <input type="radio" name="tabs" id="tab6" class="tab-radio">
     <input type="radio" name="tabs" id="tab5" class="tab-radio">
     <input type="radio" name="tabs" id="tab4" class="tab-radio">
@@ -1957,6 +2285,7 @@
 
     <!-- 탭 네비게이션 -->
     <div class="tab-container">
+        <label for="tab8" class="tab-label">💌 LOVE LETTER 💌</label>
         <label for="tab7" class="tab-label">💝 VALENTINE 💝</label>
         <label for="tab6" class="tab-label">🚨 비상 🚨</label>
         <label for="tab5" class="tab-label">🏥 OPEN 🏥</label>
@@ -1964,6 +2293,99 @@
         <label for="tab1" class="tab-label">🔍 MYSTERY 🔍</label>
         <label for="tab3" class="tab-label">🐢 GODDESS 🐢</label>
         <label for="tab2" class="tab-label">💖 LOVE 💖</label>
+    </div>
+
+    <!-- 페이지 8: 발렌타인 러브레터 💌 -->
+    <div class="page page8">
+        <!-- 떠다니는 하트들 -->
+        <div class="p8-heart" style="left:5%; font-size:1.5rem; animation-duration:8s; animation-delay:0s;">💕</div>
+        <div class="p8-heart" style="left:15%; font-size:2rem; animation-duration:10s; animation-delay:1s;">💗</div>
+        <div class="p8-heart" style="left:25%; font-size:1.2rem; animation-duration:7s; animation-delay:2s;">💖</div>
+        <div class="p8-heart" style="left:35%; font-size:1.8rem; animation-duration:9s; animation-delay:0.5s;">💓</div>
+        <div class="p8-heart" style="left:45%; font-size:1.4rem; animation-duration:11s; animation-delay:3s;">💘</div>
+        <div class="p8-heart" style="left:55%; font-size:2.2rem; animation-duration:8s; animation-delay:1.5s;">💝</div>
+        <div class="p8-heart" style="left:65%; font-size:1.3rem; animation-duration:10s; animation-delay:2.5s;">💕</div>
+        <div class="p8-heart" style="left:75%; font-size:1.6rem; animation-duration:7s; animation-delay:0.8s;">💗</div>
+        <div class="p8-heart" style="left:85%; font-size:1.9rem; animation-duration:9s; animation-delay:3.5s;">💖</div>
+        <div class="p8-heart" style="left:95%; font-size:1.1rem; animation-duration:12s; animation-delay:4s;">💓</div>
+
+        <div class="love-letter-wrapper">
+            <!-- 타이틀 -->
+            <div class="love-letter-title">
+                <span class="heart-deco">💖</span>
+                <span class="heart-deco">💕</span>
+                <span class="heart-deco">💗</span>
+                <h1>내 사랑 Minhee 💌</h1>
+                <div class="subtitle">Happy Valentine's Day 🌹</div>
+                <span class="heart-deco">💗</span>
+                <span class="heart-deco">💕</span>
+                <span class="heart-deco">💖</span>
+            </div>
+
+            <!-- 편지 1: 백지 쿠폰 -->
+            <div class="letter-card">
+                <div class="card-emoji">🥺💕</div>
+                <p>
+                    아쉽게도 오늘 같이 못 있어서<br>
+                    <span class="highlight">선덩이</span>가 특별한 걸 줄게! 💝
+                </p>
+            </div>
+
+            <!-- 쿠폰 카드 -->
+            <div class="coupon-card">
+                <h3>💕🎫 뽀뽀 3만번 쿠폰 🎫💕</h3>
+                <h3>🎫💕 마사지 1회 쿠폰 💕🎫</h3>
+                <h3>💕🎫 아이 예쁘다 무한대 쿠폰폰 🎫💕</h3>
+                <div class="coupon-emoji">🎁</div>
+                <p>
+                    ✨ <span style="color:#22d40a; font-weight:bold; font-size:1.6rem;">기한: 1년</span> ✨<br><br>
+                    왜냐면 다음 발렌타인때는<br>
+                    <span style="color:#e91e7b; font-weight:bold; font-size:1.5rem;">옆에서 챙겨줄거니깐!!! 💕💕💕</span>
+                </p>
+            </div>
+
+            <!-- 편지 2: 아루즈 -->
+            <div class="letter-card">
+                <div class="card-emoji">🐾💖</div>
+                <p>
+                    아루즈랑 💕<br>
+                    <span class="big-text">햅삐햅삐</span>하게<br>
+                    발렌타인 보내 🎀✨
+                </p>
+            </div>
+
+            <!-- 편지 3: 오구오구 -->
+            <div class="ogu-section">
+                <h2>💋 내 사랑 오구구구구 💋</h2>
+                <div class="card-emoji" style="font-size:2.5rem;">😍</div>
+                <p>
+                    지금 뭐 보는지 모르겠는데<br>
+                    표정 웃기고 ㅋㅋㅋ 🤭<br>
+                    입술은 왜 앙 다물었는지 모르겠지만 👄💕
+                </p>
+            </div>
+
+            <!-- 미니 칭찬 -->
+            <div class="letter-card">
+                <div class="card-emoji">👑✨💖</div>
+                <h2>💎 내 미니 💎</h2>
+                <div class="trait-list">
+                    <span class="trait-item">💕 귀엽고</span>
+                    <span class="trait-item">🔥 섹시하고</span>
+                    <span class="trait-item">😂 웃기고</span>
+                    <span class="trait-item">🥰 사랑스러운</span>
+                </div>
+                <p>
+                    <span class="big-text">내 미니 💖💖💖</span>
+                </p>
+            </div>
+
+            <!-- 마지막 뽀뽀 -->
+            <div class="final-kiss">
+                💋 오구오구오구오구 뽀빠뽀 💋<br>
+                <span style="font-size: 3.5rem;">💕💗💖💓💘💝💕</span>
+            </div>
+        </div>
     </div>
 
     <!-- 페이지 7: 발렌타인 샤넬백 -->
@@ -1991,7 +2413,7 @@
                     <span class="beg-line">사죠 🙏</span><br>
                     <span class="big-beg">사주떼요 💕</span>
                     <span class="big-beg">떤덩이 해주떼요 🐯</span>
-                    <span class="puppy-eyes">🥺👉👈</span>
+                    <span class="puppy-eyes">💝👉👈💝</span>
                 </div>
 
                 <hr class="valentine-divider">
