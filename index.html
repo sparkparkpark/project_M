@@ -3521,6 +3521,7 @@
             ];
             let spinning = false;
             let spinCount = 0;
+            let lastMsgIndex = -1;
 
             window.slotSpin = function() {
                 if (spinning) return;
@@ -3562,15 +3563,20 @@
                             document.getElementById('p9SpinCount').textContent = spinCount;
                             const resultEl = document.getElementById('slotResult');
                             const isJackpot = results[0] === results[1] && results[1] === results[2];
+                            const pickMsg = () => {
+                                let idx;
+                                do { idx = Math.floor(Math.random() * MESSAGES.length); } while (idx === lastMsgIndex);
+                                lastMsgIndex = idx;
+                                return MESSAGES[idx];
+                            };
                             if (isJackpot) {
                                 resultEl.textContent = '🎉 JACKPOT!! 민희 최강!!!! 🎉';
                                 resultEl.classList.add('jackpot');
-                                const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
-                                document.getElementById('jackpotMsg').innerHTML = msg + '<br>💖💖💖';
+                                document.getElementById('jackpotMsg').innerHTML = pickMsg() + '<br>💖💖💖';
                                 document.getElementById('jackpotOverlay').classList.add('active');
                             } else {
                                 resultEl.classList.remove('jackpot');
-                                resultEl.textContent = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+                                resultEl.textContent = pickMsg();
                             }
                             spinning = false;
                             btn.disabled = false;
